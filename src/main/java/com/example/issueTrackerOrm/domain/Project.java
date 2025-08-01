@@ -2,6 +2,8 @@ package com.example.issueTrackerOrm.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +19,8 @@ public class Project {
     private String name;
     
     @OneToMany(mappedBy="project")
+    @JsonManagedReference(value="project-bugs")
+
     private List<Bug> bugs;
 
     public long getId() {

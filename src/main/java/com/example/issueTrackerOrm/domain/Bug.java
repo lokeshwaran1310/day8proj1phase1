@@ -1,5 +1,7 @@
 package com.example.issueTrackerOrm.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,9 +21,11 @@ public class Bug {
    
     @ManyToOne
     @JoinColumn(name="project_ID")
+    @JsonBackReference(value="project-bugs")
     private Project project;
      @ManyToOne
     @JoinColumn(name="assigned_to")
+    @JsonBackReference(value="user-bugs")
     private User assignedTo;
 
 
